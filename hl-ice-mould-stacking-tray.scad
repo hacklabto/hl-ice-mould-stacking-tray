@@ -1,0 +1,36 @@
+difference() {
+    tray_depth=220; // fixed
+    tray_width=140; // fixed
+    tray_height=20; // variable
+    tray_wall=4;
+    union() { 
+        cube([tray_depth,tray_width,tray_wall]); // Fixed thickness of resting surface
+        // end legs
+        translate([0,0,tray_wall]) cube([tray_wall,tray_width,tray_height]);
+        translate([(tray_depth-tray_wall),0,tray_wall]) cube ([tray_wall,tray_width,tray_height]);
+        // support slants
+        translate([(tray_depth-tray_height-(tray_wall*2)),0,0]) rotate([270,270,0]) linear_extrude(tray_width) polygon([[0,0],[0,tray_height+tray_wall],[tray_height+tray_wall,tray_height+tray_wall]]);
+        translate([tray_wall,0,tray_height+tray_wall]) rotate([270,0,0]) linear_extrude(tray_width) polygon([[0,0],[0,tray_height],[tray_height,tray_height]]);
+        // positive registration
+        translate([(tray_wall/2),tray_wall,tray_height+tray_wall]) rotate([270,270,0]) cylinder(tray_width-(tray_wall*2),r=(tray_wall/2)-1, $fn=128);
+        translate([tray_depth-(tray_wall/2),tray_wall,tray_height+tray_wall]) rotate([270,0,0]) cylinder(tray_width-(tray_wall*2),r=(tray_wall/2)-1, $fn=128);
+    }
+    
+    translate([tray_wall,tray_wall,tray_wall]) cube([tray_depth-(tray_wall*2), tray_width-(tray_wall*2), tray_height]);// interior void
+    // negative registration
+    translate([(tray_wall/2),tray_wall,0]) rotate([270,270,0]) cylinder(tray_width-(tray_wall*2),r=(tray_wall/2)-1, $fn=128);
+    translate([tray_depth-(tray_wall/2),tray_wall,0]) rotate([270,0,0]) cylinder(tray_width-(tray_wall*2),r=(tray_wall/2)-1, $fn=128);
+    
+    
+    // cutouts
+    /*
+    Space Invader - 208mm x 122mm x 16mm
+    Dog Paw - 214mm x 108mm x 20mm 
+    Dog Bone - 202mm x 126mm x 24mm
+    Fruit - 216mm x 104mm x 17mm
+    */
+    
+    //space invader
+    translate([(tray_depth/2)-(190/2),(tray_width/2)-(104/2),0]) cube([190, 104, tray_wall]);
+    
+};
