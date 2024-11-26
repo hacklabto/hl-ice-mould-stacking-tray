@@ -1,6 +1,6 @@
 tray_depth=220; // fixed
 tray_width=140; // fixed
-tray_height=12; // variable
+tray_height=24; // variable
 tray_wall=4;
 
 difference() {
@@ -35,7 +35,9 @@ difference() {
     //space invader
     //translate([(tray_depth/2)-(190/2),(tray_width/2)-(104/2),0]) cube([190, 104, tray_wall]);
     //fruit
-    translate([(tray_depth/2)-(210/2),(tray_width/2)-(96/2),0]) fruit_cutouts();
+    //translate([(tray_depth/2)-(210/2),(tray_width/2)-(96/2),0]) fruit_cutouts();
+    //dogbone
+    translate([(tray_depth/2)-(176/2),(tray_width/2)-(80/2),0]) dogbone_cutouts();
     
 };
 
@@ -45,4 +47,15 @@ module fruit_cutouts() {
     cube([210, 30, tray_wall]);
     translate([0,33,0]) cube([210, 30, tray_wall]);
     translate([0,66,0]) cube([210, 30, tray_wall]);
+};
+
+module dogbone_cutouts() {
+    // 176 x 80
+    // (176 - 8)/3 = 56
+    translate([0,0,0]) cube([56, 26, tray_wall]);
+    translate([60,0,0]) cube([56, 26, tray_wall]);
+    translate([120,0,0]) cube([56, 26, tray_wall]);
+    translate([0,54,0]) cube([56, 26, tray_wall]);
+    translate([60,54,0]) cube([56, 26, tray_wall]);
+    translate([120,54,0]) cube([56, 26, tray_wall]);
 };
