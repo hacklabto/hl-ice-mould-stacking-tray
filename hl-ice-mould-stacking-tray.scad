@@ -1,6 +1,6 @@
 tray_depth=220; // fixed
 tray_width=140; // fixed
-tray_height=20; // variable
+tray_height=18; // variable
 tray_wall=4;
 
 difference() {
@@ -30,6 +30,7 @@ difference() {
     Dog Paw - 214mm x 108mm x 20mm 
     Dog Bone - 202mm x 126mm x 24mm
     Fruit - 216mm x 104mm x 17mm
+    Lego - 164mm x 114mm x 18mm
     */
     
     //space invader
@@ -38,8 +39,10 @@ difference() {
     //translate([(tray_depth/2)-(210/2),(tray_width/2)-(96/2),0]) fruit_cutouts();
     //dogbone
     //translate([(tray_depth/2)-(176/2),(tray_width/2)-(80/2),0]) dogbone_cutouts();
-    //dogpaw
-    translate([(tray_depth/2)-(208/2),(tray_width/2)-(90/2),0]) dogpaw_cutouts();
+    //dogpaw //translate([(tray_depth/2)-(208/2),(tray_width/2)-(90/2),0]) dogpaw_cutouts();
+    //lego
+    translate([(tray_depth/2)-(136/2),(tray_width/2)-(96/2),0]) cube([136, 96, tray_wall]);
+
 };
 
 
