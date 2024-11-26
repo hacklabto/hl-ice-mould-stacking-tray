@@ -1,8 +1,10 @@
+tray_depth=220; // fixed
+tray_width=140; // fixed
+tray_height=12; // variable
+tray_wall=4;
+
 difference() {
-    tray_depth=220; // fixed
-    tray_width=140; // fixed
-    tray_height=20; // variable
-    tray_wall=4;
+
     union() { 
         cube([tray_depth,tray_width,tray_wall]); // Fixed thickness of resting surface
         // end legs
@@ -31,6 +33,16 @@ difference() {
     */
     
     //space invader
-    translate([(tray_depth/2)-(190/2),(tray_width/2)-(104/2),0]) cube([190, 104, tray_wall]);
+    //translate([(tray_depth/2)-(190/2),(tray_width/2)-(104/2),0]) cube([190, 104, tray_wall]);
+    //fruit
+    translate([(tray_depth/2)-(210/2),(tray_width/2)-(96/2),0]) fruit_cutouts();
     
+};
+
+
+module fruit_cutouts() {
+    // 96, 30 + 3 + 30 + 3+ 30
+    cube([210, 30, tray_wall]);
+    translate([0,33,0]) cube([210, 30, tray_wall]);
+    translate([0,66,0]) cube([210, 30, tray_wall]);
 };
